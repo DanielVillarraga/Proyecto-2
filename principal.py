@@ -4,7 +4,19 @@ from analisis_est import analyze_data
 from graficador import create_visualizations
 import pandas as pd
 import os
+import time
 
+def timing(func):
+    """Decorador que mide el tiempo de ejecucion"""
+    def wrapper (*args,**kwargs):
+        start = time.time()
+        result = func(*args,**kwargs)
+        end = time.time()
+        print(f'Tiempo de ejecucion del programa es: {end-start:.3f} segundos')
+        return result
+    return (wrapper)
+
+@timing
 def main():
     # Configurar carpetas de salida
     os.makedirs('outputs/visualizations', exist_ok=True)
