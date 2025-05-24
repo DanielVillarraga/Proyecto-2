@@ -5,7 +5,18 @@ from graficador import create_visualizations
 import pandas as pd
 import os
 import time
+import re
 
+### Desde la linea 11 a la 18 se tiene un código que transforma los separadores de un dataset de ";" a ","
+find_str = ";"
+replace_str = ","
+
+with open('precipitaciones_españa.csv') as f:
+    file_text = f.read()
+    replaced_text = re.sub(find_str, replace_str, file_text)
+    with open('texto_con_comas.csv', 'w') as r_file:
+        r_file.write(replaced_text)
+        
 def timing(func):
     """Decorador que mide el tiempo de ejecucion"""
     def wrapper (*args,**kwargs):
@@ -22,7 +33,7 @@ def main():
     os.makedirs('outputs/visualizations', exist_ok=True)
     
     # 1. Cargar datos
-    data = load_data('datos/train3.csv')
+    data = load_data('datos_con_comas.csv')
     if data is None:
         return
     
