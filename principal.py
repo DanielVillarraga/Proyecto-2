@@ -51,7 +51,7 @@ def main():
     
     print("Proceso completado. Resultados guardados en la carpeta 'outputs'")
 
-"""Estas dos ultimas lineas evitan que al importar el código este se ejecute todo, así se pueden elejir las funciones que se quieran usar"""
+"""Estas dos ultimas lineas ejecutan el código solo cuando el archivo es el programa principal (y no cuando es importado)."""
 
 if __name__ == "__main__":
     main()
