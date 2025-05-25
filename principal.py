@@ -11,11 +11,7 @@ import re
 find_str = ";"
 replace_str = ","
 
-with open('precipitaciones_españa.csv') as f:
-    file_text = f.read()
-    replaced_text = re.sub(find_str, replace_str, file_text)
-    with open('texto_con_comas.csv', 'w') as r_file:
-        r_file.write(replaced_text)
+
         
 def timing(func):
     """Decorador que mide el tiempo de ejecucion"""
@@ -27,11 +23,18 @@ def timing(func):
         return result
     return (wrapper)
 
+with open('diabetes.csv') as f:
+    file_text = f.read()
+    replaced_text = re.sub(find_str, replace_str, file_text)
+    with open('datos_con_comas.csv', 'w') as r_file:
+        r_file.write(replaced_text)
+
 @timing
 def main():
     # Configurar carpetas de salida
     os.makedirs('outputs/visualizations', exist_ok=True)
-    
+    os.makedirs('outputs/visualizations/distribuciones', exist_ok=True)
+
     # 1. Cargar datos
     data = load_data('datos_con_comas.csv')
     if data is None:
@@ -49,9 +52,12 @@ def main():
     # 4. Visualizaciones
     create_visualizations(cleaned_data)
     
-    print("Proceso completado. Resultados guardados en la carpeta 'outputs'")
+print("Proceso completado. Resultados guardados en la carpeta 'outputs'")
 
-"""Estas dos ultimas lineas evitan que al importar el código este se ejecute todo, así se pueden elejir las funciones que se quieran usar"""
+
+
+
+"""Estas dos ultimas lineas ejecutan el código solo cuando el archivo es el programa principal (y no cuando es importado)."""
 
 if __name__ == "__main__":
     main()
