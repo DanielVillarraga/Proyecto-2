@@ -41,7 +41,9 @@ def main():
         return
     
     # 2. Limpiar datos
+    cleaned_data = selecciona_columns(data)
     cleaned_data = clean_data(data)
+    
     cleaned_data.to_csv('outputs/cleaned_data.csv', index=False)
     
     # 3. Análisis estadístico
