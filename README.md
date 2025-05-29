@@ -15,9 +15,9 @@ Además el proyecto cuenta con los siguientes items:
 
 - Modularización por bloques.
 - Documentación de cada función.
-- Uso de Librerias externas como: Numpy, Pandas, Matplotlib, time, seaborn,scipy, ...
-- Funciones propias:
-- Uso de dataframes de almenos 500 filas y 5 columnas.
-- Decoradores: @Timing, ...
-- Visualizaciones o Gráficas como: Matrices de correlación, scatterplot, ...
+- Uso de Librerias externas como: Numpy, Pandas, Matplotlib, time, seaborn,scipy y re
+- Funciones propias: load_data, cleam_data, analyze_data, decorador timing, create_vizualizations.
+- Uso de dataframes de almenos 500 filas y 5 columnas dirigidos a la diabetes y a cuerpos celestes.
+- Decoradores: @Timing,
+- Visualizaciones o Gráficas como: Matrices de correlación, scatterplot y más gráficas
 - Se exportan los resultados en archivos .csv y en .PNG
