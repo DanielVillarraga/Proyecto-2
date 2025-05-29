@@ -6,12 +6,6 @@ import pandas as pd
 import os
 import time
 import re
-
-### Desde la linea 11 a la 18 se tiene un código que transforma los separadores de un dataset de ";" a ","
-find_str = ";"
-replace_str = ","
-
-
         
 def timing(func):
     """Decorador que mide el tiempo de ejecucion"""
@@ -23,6 +17,9 @@ def timing(func):
         return result
     return (wrapper)
 
+'''Estas 7 lineas cambian los separadores de ";" a "," para que se puedan leerlos csv con esa notación'''
+find_str = ";"
+replace_str = ","
 with open('diabetes.csv') as f:
     file_text = f.read()
     replaced_text = re.sub(find_str, replace_str, file_text)
@@ -41,9 +38,7 @@ def main():
         return
     
     # 2. Limpiar datos
-    cleaned_data = selecciona_columns(data)
     cleaned_data = clean_data(data)
-    
     cleaned_data.to_csv('outputs/cleaned_data.csv', index=False)
     
     # 3. Análisis estadístico
@@ -55,9 +50,6 @@ def main():
     create_visualizations(cleaned_data)
     
 print("Proceso completado. Resultados guardados en la carpeta 'outputs'")
-
-
-
 
 """Estas dos ultimas lineas ejecutan el código solo cuando el archivo es el programa principal (y no cuando es importado)."""
 
